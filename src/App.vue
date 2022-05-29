@@ -22,6 +22,12 @@
     <a href="https://www.flaticon.com/free-icons/button" title="button icons"
       >Button icons created by Freepik - Flaticon</a
     >
+    |
+    <a
+      href="https://www.youtube.com/watch?v=WQa9-4K3me4&list=PLkxq_Reh3VpG8995R55V2gjsBVcCgyQpE&index=52"
+      title="Ben Code Zen Youtube"
+      >Tutorial from BenCodeZen Youtube Channel</a
+    >
   </footer>
 </template>
 
