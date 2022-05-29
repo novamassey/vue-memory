@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import CardComp from "./components/CardComp";
 
 export default {
@@ -26,10 +26,24 @@ export default {
   setup() {
     const cardList = ref([]);
     const userSelection = ref([]);
-    let status = ref("");
+    let status = computed(() => {
+      if (remainingPairs.value === 0) {
+        return "You won!";
+      } else {
+        return `Keep Trying to Find the Remaining Pairs ${remainingPairs.value}!`;
+      }
+    });
+
+    const remainingPairs = computed(() => {
+      const remainingCards = cardList.value.filter(
+        (card) => card.matched === false
+      ).length;
+      return remainingCards / 2;
+    });
+
     for (let i = 0; i < 16; i++) {
       cardList.value.push({
-        value: i,
+        value: 6,
         visible: false,
         position: i,
         matched: false,
@@ -71,6 +85,7 @@ export default {
       flipCard,
       userSelection,
       status,
+      // remainingPairs,
     };
   },
 };
