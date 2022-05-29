@@ -1,5 +1,5 @@
 <template>
-  <h1>Memory Game</h1>
+  <h1>Earth Day Memory Game</h1>
 
   <section class="game-board">
     <CardComp
@@ -55,23 +55,32 @@ export default {
           ...card,
           matched: false,
           position: index,
-          visible: true,
+          visible: false,
         };
       });
     };
 
-    const cardItems = [1, 2, 3, 4, 5, 6, 7, 8];
+    const cardItems = [
+      "flower",
+      "mountains",
+      "rainbow",
+      "recycling-bag",
+      "climate-change",
+      "sun",
+      "trees",
+      "wind-turbine",
+    ];
 
     cardItems.forEach((item) => {
       cardList.value.push({
         value: item,
-        visible: true,
+        visible: false,
         position: null,
         matched: false,
       });
       cardList.value.push({
         value: item,
-        visible: true,
+        visible: false,
         position: null,
         matched: false,
       });
@@ -94,8 +103,16 @@ export default {
     // }
     const flipCard = (payload) => {
       cardList.value[payload.position].visible = true;
+
       if (userSelection.value[0]) {
-        userSelection.value[1] = payload;
+        if (
+          userSelection.value[0].position === payload.position &&
+          userSelection.value[0].faceValue === payload.faceValue
+        ) {
+          return;
+        } else {
+          userSelection.value[1] = payload;
+        }
       } else {
         userSelection.value[0] = payload;
       }
@@ -112,8 +129,10 @@ export default {
             cardList.value[cardOne.position].matched = true;
             cardList.value[cardTwo.position].matched = true;
           } else {
-            cardList.value[cardOne.position].visible = false;
-            cardList.value[cardTwo.position].visible = false;
+            setTimeout(() => {
+              cardList.value[cardOne.position].visible = false;
+              cardList.value[cardTwo.position].visible = false;
+            }, 2000);
           }
 
           userSelection.value.length = 0;
@@ -135,6 +154,10 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: url("../public/images/download.jpeg");
+  background-size: cover;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -145,8 +168,8 @@ export default {
 }
 .game-board {
   display: grid;
-  grid-template-columns: 100px 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px 100px;
+  grid-template-columns: repeat(4, 120px);
+  grid-template-rows: repeat(4, 120px);
   column-gap: 30px;
   row-gap: 30px;
   justify-content: center;
