@@ -13,7 +13,7 @@
     />
   </section>
   <h2>{{ status }}</h2>
-  <button @click="resetGame">Reset</button>
+  <button @click="resetGame" class="button"></button>
 </template>
 
 <script>
@@ -25,6 +25,9 @@ export default {
   name: "App",
   components: { CardComp },
   //setup is vanilla JS so you must return
+  mounted() {
+    this.resetGame();
+  },
   setup() {
     const cardList = ref([]);
     const userSelection = ref([]);
@@ -178,5 +181,12 @@ body {
   border: 5px solid gray;
   height: 100px;
   width: 100px;
+}
+.button {
+  background: url("../public/images/refresh-buttons.png");
+  background-size: cover;
+  border: none;
+  height: 50px;
+  width: 50px;
 }
 </style>

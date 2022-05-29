@@ -56,7 +56,8 @@ img {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: rgba(52, 235, 125, 0.1);
+  /* background: rgba(52, 235, 125, 0.1); */
+  background: rgba(255 255 255 0.9);
   background-size: cover;
   display: flex;
   align-items: center;
@@ -64,7 +65,7 @@ img {
   border-radius: 10px;
 }
 .card-face.is-front {
-  background: rgba(52, 235, 125, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   background-size: contain;
   color: white;
 }
