@@ -14,6 +14,15 @@
   </section>
   <h2>{{ status }}</h2>
   <button @click="resetGame" class="button"></button>
+  <footer>
+    <a href="https://www.flaticon.com/free-icons/planet" title="planet icons"
+      >Planet icons created by Freepik - Flaticon</a
+    >
+    |
+    <a href="https://www.flaticon.com/free-icons/button" title="button icons"
+      >Button icons created by Freepik - Flaticon</a
+    >
+  </footer>
 </template>
 
 <script>
